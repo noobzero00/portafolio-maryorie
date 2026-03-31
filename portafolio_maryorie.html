@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portafolio — Maryorie Bermúdez</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --white: #ffffff;
+      --bg: #f8f7f4;
+      --bg2: #f1ede6;
+      --ink: #1c1a17;
+      --ink2: #4a4640;
+      --ink3: #8a847c;
+      --accent: #2d6a4f;
+      --accent2: #40916c;
+      --accent3: #d8f3dc;
+      --tag-bg: #eef7f1;
+      --tag-border: #b7e4c7;
+      --card: #ffffff;
+      --border: #e8e4de;
+      --shadow: 0 1px 3px rgba(28,26,23,0.06), 0 4px 16px rgba(28,26,23,0.06);
+      --shadow-hover: 0 4px 8px rgba(28,26,23,0.08), 0 12px 32px rgba(28,26,23,0.1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(248,247,244,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 58px;
+    }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--ink2);
+      letter-spacing: 0.3px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 90px 40px 70px;
+      display: flex;
+      align-items: center;
+      gap: 56px;
+    }
+
+    .avatar {
+      flex-shrink: 0;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: var(--accent3);
+      border: 3px solid var(--tag-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 38px;
+      color: var(--accent);
+    }
+
+    .hero-text h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 42px;
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+
+    .hero-text h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-role {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-bottom: 18px;
+    }
+
+    .hero-bio {
+      font-size: 15px;
+      color: var(--ink2);
+      max-width: 520px;
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      background: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      color: var(--accent);
+      border-radius: 50px;
+      padding: 5px 14px;
+      font-size: 12.5px;
+      font-weight: 500;
+    }
+
+    /* ── SECTION ── */
+    section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 36px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-header h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    .section-count {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink3);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ── ABOUT CARDS ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 0;
+    }
+
+    .about-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .about-card .label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-bottom: 8px;
+    }
+
+    .about-card .value {
+      font-family: 'DM Serif Display', serif;
+      font-size: 17px;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+
+    /* ── TALLER GRID ── */
+    .talleres-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .taller-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .taller-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--accent2);
+      opacity: 0;
+      transition: opacity 0.25s;
+      border-radius: 12px 0 0 12px;
+    }
+
+    .taller-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-3px);
+      border-color: var(--tag-border);
+    }
+
+    .taller-card:hover::before { opacity: 1; }
+
+    .taller-num {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 8px;
+    }
+
+    .taller-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 15.5px;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    .taller-tag {
+      display: inline-block;
+      background: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      color: var(--accent);
+      border-radius: 50px;
+      padding: 3px 10px;
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    /* pdf button */
+    .taller-pdf {
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink3);
+      cursor: pointer;
+      transition: color 0.2s;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    .taller-pdf:hover { color: var(--accent); }
+
+    .taller-pdf svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .skill-group {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .skill-group h3 {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-bottom: 14px;
+    }
+
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-pill {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 5px 13px;
+      font-size: 12.5px;
+      color: var(--ink2);
+      font-weight: 400;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 40px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--ink3);
+    }
+
+    footer span {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      color: var(--ink2);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero         { animation: fadeUp 0.6s ease both; }
+    .about-card   { animation: fadeUp 0.5s ease both; }
+    .taller-card  { animation: fadeUp 0.4s ease both; }
+
+    .taller-card:nth-child(1)  { animation-delay: 0.05s; }
+    .taller-card:nth-child(2)  { animation-delay: 0.10s; }
+    .taller-card:nth-child(3)  { animation-delay: 0.15s; }
+    .taller-card:nth-child(4)  { animation-delay: 0.20s; }
+    .taller-card:nth-child(5)  { animation-delay: 0.25s; }
+    .taller-card:nth-child(6)  { animation-delay: 0.30s; }
+    .taller-card:nth-child(7)  { animation-delay: 0.35s; }
+    .taller-card:nth-child(8)  { animation-delay: 0.40s; }
+    .taller-card:nth-child(9)  { animation-delay: 0.45s; }
+    .taller-card:nth-child(10) { animation-delay: 0.50s; }
+    .taller-card:nth-child(11) { animation-delay: 0.55s; }
+    .taller-card:nth-child(12) { animation-delay: 0.60s; }
+    .taller-card:nth-child(13) { animation-delay: 0.65s; }
+    .taller-card:nth-child(14) { animation-delay: 0.70s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      .hero { flex-direction: column; gap: 28px; padding: 60px 24px 50px; }
+      .talleres-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+      section { padding: 0 24px 60px; }
+      nav { padding: 0 24px; }
+      .nav-links { gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">MB.</a>
+  <ul class="nav-links">
+    <li><a href="#sobre-mi">Sobre mí</a></li>
+    <li><a href="#talleres">Talleres</a></li>
+    <li><a href="#habilidades">Habilidades</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="avatar">MB</div>
+  <div class="hero-text">
+    <p class="hero-role">Portafolio Académico · 1° Cuatrimestre–2026</p>
+    <h1>Maryorie<br><em>Bermúdez</em></h1>
+    <p class="hero-bio">
+      Estudiante de Técnico en Ciberseguridad en el ITSE, con enfoque en seguridad defensiva, análisis de amenazas y operaciones SOC. Apasionada por proteger infraestructuras y comprender el comportamiento de los atacantes para construir mejores defensas.
+    </p>
+    <div class="hero-tags">
+      <span class="tag">Ciberseguridad</span>
+      <span class="tag">SIEM · Wazuh</span>
+      <span class="tag">Análisis de red</span>
+      <span class="tag">SOC Analyst</span>
+      <span class="tag">ITSE</span>
+    </div>
+  </div>
+</div>
+
+<!-- SOBRE MÍ -->
+<section id="sobre-mi">
+  <div class="section-header">
+    <h2>Sobre mí</h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-card">
+      <div class="label">Institución</div>
+      <div class="value">Instituto Técnico Superior Especializado (ITSE)</div>
+    </div>
+    <div class="about-card">
+      <div class="label">Carrera</div>
+      <div class="value">Técnico en Ciberseguridad</div>
+    </div>
+    <div class="about-card">
+      <div class="label">Enfoque</div>
+      <div class="value">Seguridad defensiva & Operaciones SOC</div>
+    </div>
+  </div>
+</section>
+
+<!-- TALLERES -->
+<section id="talleres">
+  <div class="section-header">
+    <h2>Talleres y Laboratorios</h2>
+    <span class="section-count">14 entradas</span>
+  </div>
+  <div class="talleres-grid">
+
+    <div class="taller-card">
+      <div class="taller-num">Laboratorio 01</div>
+      <div class="taller-title">Firewall</div>
+      <span class="taller-tag">Redes</span>
+      <div>
+        <button class="taller-pdf" onclick="alert('Reemplaza esto con el link de tu PDF en Google Drive')">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="1" width="10" height="13" rx="1.5"/><path d="M5 5h4M5 8h4M5 11h2"/><path d="M10 1v3.5H13.5"/></svg>
+          Ver documento
+        </button>
+      </div>
+    </div>
+
+    <div class="taller-card">
+      <div class="taller-num">Laboratorio 02</div>
+      <div class="taller-title">Fortigate & Sophos</div>
+      <span class="taller-tag">Firewall</span>
+      <div>
+        <button class="taller-pdf" onclick="alert('Reemplaza esto con el link de tu PDF en Google Drive')">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="1" width="10" height="13" rx="1.5"/><path d="M5 5h4M5 8h4M5 11h2"/><path d="M10 1v3.5H13.5"/></svg>
+          Ver documento
+        </button>
+      </div>
+    </div>
+
+    <div class="taller-card">
+      <div class="taller-num">Taller 03</div>
+      <div class="taller-title">Playbook de Respuesta a Incidentes</div>
+      <span class="taller-tag">SOC</span>
+      <div>
+        <button class="taller-pdf" onclick="alert('Reemplaza esto con el link de tu PDF en Google Drive')">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="1" width="10" height="13" rx="1.5"/><path d="M5 5h4M5 8h4M5 11h2"/><path d="M10 1v3.5H13.5"/></svg>
+          Ver documento
+        </button>
+      </div>
+    </div>
+
+    <div class="taller-card">
+      <div class="taller-num">Taller 04</div>
+      <div class="taller-title">Identificación de Activos</div>
+      <span class="taller-tag">Gestión</span>
+      <div>
+        <button class="taller-pdf" onclick="alert('Reemplaza esto con el link de tu PDF en Google Drive')">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="1" width="10" height="13" rx="1.5"/><path d="M5 5h4M5 8h4M5 11h2"/><path d="M10 1v3.5H13.5"/></svg>
+          Ver documento
+        </button>
+      </div>
+    </div>
+
+    <div class="taller-card">
+      <div class="taller-num">Taller 05</div>
+      <div class="taller-title">Evaluación de Configuración Wazuh</div>
+      <span class="taller-tag">SIEM</span>
+      <div>
+        <button class="taller-pdf" onclick="alert('Reemplaza esto con el link de tu PDF en Google Drive')">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="1" width="10" height="13" rx="1.5"/><path d="M5 5h4M5 8h4M5 11h2"/><path d="M10 1v3.5H13.5"/></svg>
+          Ver documento
+        </button>
+      </div>
+    </div>
+
+    <div class="taller-card">
+      <div class="taller-num">Taller 06</div>
+      <div class="taller-title">Ingeniería de Detección Inversa: Del Incidente a la Matriz</div>
+      <span class="taller-tag">MITRE ATT&CK</span>
+      <div>
+        <button class="taller-pdf" onclick="alert('Reemplaza esto con el link de tu PDF en Google Drive')">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="1" width="10" height="13" rx="1.5"/><path d="M5 5h4M5 8h4M5 11h2"/><path d="M10 1v3.5H13.5"/></svg>
+          Ver documento
+        </button>
+      </div>
+    </div>
+
+    <div class="taller-card">
+      <div class="taller-num">Taller 07</div>
+      <div class="taller-title">Implementación de SIEM con Wazuh Cloud</div>
+      <span class="taller-tag">SIEM</span>
+      <div>
+        <button class="taller-pdf" onclick="alert('Reemplaza esto con el link de tu PDF en Google Drive')">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="1" width="10" height="13" rx="1.5"/><path d="M5 5h4M5 8h4M5 11h2"/><path d="M10 1v3.5H13.5"/></svg>
+          Ver documento
+        </button>
+      </div>
+    </div>
+
+    <div class="taller-card">
+      <div class="taller-num">Taller 08</div>
+      <div class="taller-title">Exploración de la Herramienta Wazuh</div>
+      <span class="taller-tag">SIEM</span>
+      <div>
+        <button class="taller-pdf" onclick="alert('Reemplaza esto con el link de tu PDF en Google Drive')">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="1" width="10" height="13" rx="1.5"/><path d="M5 5h4M5 8h4M5 11h2"/><path d="M10 1v3.5H13.5"/></svg>
+          Ver documento
+        </button>
+      </div>
+    </div>
+
+    <div class="taller-card">
+      <div class="taller-num">Taller 09</div>
+      <div class="taller-title">Rol de Analista SOC</div>
+      <span class="taller-tag">SOC</span>
+      <div>
+        <button class="taller-pdf" onclick="alert('Reemplaza esto con el link de tu PDF en Google Drive')">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="1" width="10" height="13" rx="1.5"/><path d="M5 5h4M5 8h4M5 11h2"/><path d="M10 1v3.5H13.5"/></svg>
+          Ver documento
+        </button>
+      </div>
+    </div>
+
+    <div class="taller-card">
+      <div class="taller-num">Taller 10</div>
+      <div class="taller-title">Rol de Analista SOC — Parte 2</div>
+      <span class="taller-tag">SOC</span>
+      <div>
+        <button class="taller-pdf" onclick="alert('Reemplaza esto con el link de tu PDF en Google Drive')">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="1" width="10" height="13" rx="1.5"/><path d="M5 5h4M5 8h4M5 11h2"/><path d="M10 1v3.5H13.5"/></svg>
+          Ver documento
+        </button>
+      </div>
+    </div>
+
+    <div class="taller-card">
+      <div class="taller-num">Taller 11</div>
+      <div class="taller-title">Implementación de IPS — Snort</div>
+      <span class="taller-tag">Detección</span>
+      <div>
+        <button class="taller-pdf" onclick="alert('Reemplaza esto con el link de tu PDF en Google Drive')">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="1" width="10" height="13" rx="1.5"/><path d="M5 5h4M5 8h4M5 11h2"/><path d="M10 1v3.5H13.5"/></svg>
+          Ver documento
+        </button>
+      </div>
+    </div>
+
+    <div class="taller-card">
+      <div class="taller-num">Exposición 01</div>
+      <div class="taller-title">Exposición Número 1</div>
+      <span class="taller-tag">Presentación</span>
+      <div>
+        <button class="taller-pdf" onclick="alert('Reemplaza esto con el link de tu PDF en Google Drive')">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="1" width="10" height="13" rx="1.5"/><path d="M5 5h4M5 8h4M5 11h2"/><path d="M10 1v3.5H13.5"/></svg>
+          Ver documento
+        </button>
+      </div>
+    </div>
+
+    <div class="taller-card">
+      <div class="taller-num">Parcial 01</div>
+      <div class="taller-title">Parcial 1</div>
+      <span class="taller-tag">Evaluación</span>
+      <div>
+        <button class="taller-pdf" onclick="alert('Reemplaza esto con el link de tu PDF en Google Drive')">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="1" width="10" height="13" rx="1.5"/><path d="M5 5h4M5 8h4M5 11h2"/><path d="M10 1v3.5H13.5"/></svg>
+          Ver documento
+        </button>
+      </div>
+    </div>
+
+    <div class="taller-card">
+      <div class="taller-num">Taller 14</div>
+      <div class="taller-title">Implementación de un WAF</div>
+      <span class="taller-tag">Seguridad web</span>
+      <div>
+        <button class="taller-pdf" onclick="alert('Reemplaza esto con el link de tu PDF en Google Drive')">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="1" width="10" height="13" rx="1.5"/><path d="M5 5h4M5 8h4M5 11h2"/><path d="M10 1v3.5H13.5"/></svg>
+          Ver documento
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- HABILIDADES -->
+<section id="habilidades">
+  <div class="section-header">
+    <h2>Habilidades</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <h3>Herramientas</h3>
+      <div class="skill-pills">
+        <span class="skill-pill">Wazuh</span>
+        <span class="skill-pill">Snort</span>
+        <span class="skill-pill">Burp Suite</span>
+        <span class="skill-pill">Fortigate</span>
+        <span class="skill-pill">Sophos</span>
+        <span class="skill-pill">Wireshark</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Áreas</h3>
+      <div class="skill-pills">
+        <span class="skill-pill">SIEM</span>
+        <span class="skill-pill">SOC Operations</span>
+        <span class="skill-pill">Respuesta a incidentes</span>
+        <span class="skill-pill">Firewall</span>
+        <span class="skill-pill">IPS / WAF</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Frameworks</h3>
+      <div class="skill-pills">
+        <span class="skill-pill">MITRE ATT&CK</span>
+        <span class="skill-pill">OWASP Mobile Top 10</span>
+        <span class="skill-pill">NIST</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Seguridad móvil</h3>
+      <div class="skill-pills">
+        <span class="skill-pill">Android Security</span>
+        <span class="skill-pill">SSL Pinning</span>
+        <span class="skill-pill">MitM Analysis</span>
+        <span class="skill-pill">Frida</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  Portafolio de <span>Maryorie Bermúdez</span> · Técnico en Ciberseguridad · ITSE · 2026
+</footer>
+
+</body>
+</html>
